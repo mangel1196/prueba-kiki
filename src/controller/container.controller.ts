@@ -4,7 +4,7 @@ import { IsArray, IsInt, Min } from 'class-validator';
 import { Container } from 'src/dto/container';
 import { ContainerService } from 'src/service/container.service'; 
 
-@ApiTags('containers')
+@ApiTags('knapsack')
 @Controller('containers')
 export class ContainerController {
   constructor(private readonly containerService: ContainerService) {}
