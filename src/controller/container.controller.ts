@@ -1,7 +1,6 @@
 import { Controller, Post, Body, ValidationPipe } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBadRequestResponse } from '@nestjs/swagger';
-import { IsArray, IsInt, Min } from 'class-validator';
-import { Container } from 'src/dto/container';
+import { ApiTags, ApiOperation, ApiResponse, ApiBadRequestResponse } from '@nestjs/swagger'; 
+import { SelectContainersRequest } from '../dto/request/select.container.request';
 import { ContainerService } from 'src/service/container.service'; 
 
 @ApiTags('knapsack')
@@ -19,15 +18,3 @@ export class ContainerController {
     return this.containerService.selectContainers(budget, containers);
   }
 }
-
-class SelectContainersRequest {
-    @IsInt()
-    @Min(1)
-    budget: number;
-  
-    @IsArray()
-    @IsInt({ each: true })
-    containers: Container[];
-  }
-    
- 

@@ -1,6 +1,8 @@
+import { Injectable } from "@nestjs/common";
 import { Boat } from "../dto/boat";
 import { Container } from '../dto/container';
 
+@Injectable()
 export class ContainerService {
 
   selectContainers(maxLoad: number, containers: Container[]): string{
