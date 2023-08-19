@@ -7,7 +7,7 @@ class ContainerService {
         let boat = new boat_1.Boat(maxLoad, containers.length);
         let boatOpt = new boat_1.Boat(maxLoad, containers.length);
         this.fillBoat(boat, containers, false, boatOpt);
-        return boatOpt.getElements().filter(element => element.getName()).join(", ");
+        return boatOpt.getElements().map(element => element.getName()).join(", ");
     }
     fillBoat(boat, containers, full, boatOpt) {
         if (full) {

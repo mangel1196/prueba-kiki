@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Boat = void 0;
-const container_1 = require("./container");
 class Boat {
     constructor(maxCost, cantElements) {
         this.maxCost = maxCost;
-        this.elements = new container_1.Container[cantElements];
+        this.elements = [];
         this.cost = 0;
         this.value = 0;
     }
