@@ -10,7 +10,7 @@ export class Boat{
     constructor(maxCost: number, cantElements: number){
 
         this.maxCost = maxCost;
-        this.elements = new Container[cantElements];
+        this.elements = [];
         this.cost = 0;
         this.value = 0;
     }

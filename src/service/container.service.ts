@@ -1,5 +1,5 @@
-import { Boat } from 'src/dto/boat';
-import { Container } from 'src/dto/container';
+import { Boat } from "../dto/boat";
+import { Container } from '../dto/container';
 
 export class ContainerService {
 
@@ -9,8 +9,8 @@ export class ContainerService {
    let boatOpt:Boat = new Boat(maxLoad, containers.length);
 
    this.fillBoat(boat, containers, false, boatOpt);
-
-     return boatOpt.getElements().filter(element => element.getName()).join(", ");
+ 
+     return boatOpt.getElements().map(element => element.getName()).join(", ");
   }
 
   fillBoat(boat: Boat, containers: Container[], full:boolean, boatOpt: Boat){
