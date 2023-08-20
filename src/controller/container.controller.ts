@@ -17,4 +17,12 @@ export class ContainerController {
 
     return this.containerService.selectContainers(budget, containers).map(element => element.name).join(", ");
   }
+
+  @ApiOperation({ summary: 'Seleccionar contenedores dentro de un presupuesto' })
+  @ApiResponse({ status: 200, description: 'Nombres de contenedores seleccionados', type: [String] })
+  @ApiBadRequestResponse({ description: 'Parámetros inválidos' })
+  @Post('/stats')
+  stats(): any {
+    return this.containerService.getStats();
+  }
 }

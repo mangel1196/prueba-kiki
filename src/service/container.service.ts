@@ -21,6 +21,19 @@ export class ContainerService {
     return this.repository.save(request);
   }
 
+  getStats(){
+    let requests;
+    this.repository.find().then(elements => requests = elements);
+
+    const total = requests.map(element => element.initialBudget).reduce((valorAnterior, valorActual, indice, vector) => valorAnterior + valorActual);
+    const aproved = requests.map(element => element.aprovedBudget).reduce((valorAnterior, valorActual, indice, vector) => valorAnterior + valorActual);
+    return {
+      "total_budget" : total,
+      "approved_budget" : aproved,
+      "rejected_budget": total - aproved
+    }
+  }
+
   selectContainers(budget: number, containers: Container[]): Container[] {
     const n = containers.length;
     const dp: number[][] = Array.from({ length: n + 1 }, () => Array(budget + 1).fill(0));
