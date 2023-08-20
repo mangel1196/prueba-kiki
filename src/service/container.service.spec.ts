@@ -19,8 +19,8 @@ describe('ContainerService', () => {
 
         // Act
         const result = containerService.selectContainers(maxLoad, containers);
- 
-
+  
+        console.log(JSON.stringify(containers));
         // Assert
         expect(result).toBe('');
       });
@@ -70,7 +70,7 @@ describe('ContainerService', () => {
 
     // Act
     const result = containerService.selectContainers(maxLoad, containers);
-
+ 
     // Assert
     expect(result).toBe("Container1");
   });

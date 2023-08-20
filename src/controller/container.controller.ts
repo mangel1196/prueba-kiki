@@ -1,7 +1,7 @@
 import { Controller, Post, Body, ValidationPipe } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBadRequestResponse } from '@nestjs/swagger'; 
 import { SelectContainersRequest } from '../dto/request/select.container.request';
-import { ContainerService } from 'src/service/container.service'; 
+import { ContainerService } from '../service/container.service'; 
 
 @ApiTags('knapsack')
 @Controller('containers')
@@ -15,6 +15,6 @@ export class ContainerController {
   selectContainersFromJSON(@Body(new ValidationPipe()) request: SelectContainersRequest): string {
     const { budget, containers } = request; 
 
-    return this.containerService.selectContainers(budget, containers);
+    return this.containerService.selectContainers(budget, containers).map(element => element.name).join(", ");
   }
 }

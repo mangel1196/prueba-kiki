@@ -1,11 +1,11 @@
 import { Container } from "./container";
 
 export class Boat{
-    private maxCost: number;
-    private elements: Container[];
+    maxCost: number;
+    elements: Container[];
 
-    private cost: number;
-    private value: number;
+    cost: number;
+    value: number;
 
     constructor(maxCost: number, cantElements: number){
 
@@ -17,8 +17,8 @@ export class Boat{
 
     addElement(container: Container){
         this.elements.push(container);   
-        this.cost += container.getCost();
-        this.value += container.getValue();
+        this.cost += container.cost;
+        this.value += container.value;
     }
 
     clear(){
@@ -29,27 +29,11 @@ export class Boat{
 
     deleteElement(container: Container){
         this.elements = this.elements.filter(item => item !== container);
-        this.cost -= container.getCost();
-        this.value -= container.getValue();
+        this.cost -= container.cost;
+        this.value -= container.value;
     }
 
     existElement(container: Container) : boolean{
         return this.elements.find((element) => container === element) !== undefined;
-    }
-
-    getCost():number{
-        return this.cost;
-    }
-
-    getValue():number{
-        return this.value;
-    }
-
-    getElements():Container[]{
-        return this.elements;
-    }
-
-    getMaxCost():number{
-        return this.maxCost;
-    }
+    } 
 }

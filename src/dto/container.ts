@@ -1,19 +1,9 @@
 export class Container {
    
-  private readonly name: string;
-  private readonly cost: number;
-  private readonly value: number;
-
-  getName(): string{
-    return this.name;
-  }
-  getCost(): number{
-    return this.cost;
-  }
-  getValue(): number{
-    return this.value;
-  }
-    
+  name: string;
+  cost: number;
+  value: number;
+ 
   constructor(name:string, cost:number, value:number){
     this.name = name;
     this.cost = cost;

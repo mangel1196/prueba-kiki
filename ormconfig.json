@@ -1,0 +1,16 @@
+{
+  "type": "postgres",
+  "host": "127.0.0.1",
+  "port": 5432,
+  "username": "admin",
+  "password": "admin",
+  "database": "kiki_prueba",
+  "entities": [
+    "dist/**/*.entity.js"
+  ],
+  "migrationsTableName": "migration",
+  "migrations": [
+    "src/migration/*.ts"
+  ],
+  "ssl": false
+}

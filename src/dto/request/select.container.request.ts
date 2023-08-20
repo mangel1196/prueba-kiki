@@ -6,8 +6,7 @@ export class SelectContainersRequest {
     @Min(1)
     budget: number;
   
-    @IsArray()
-    @IsInt({ each: true })
+    @IsArray() 
     containers: Container[];
   }
     
