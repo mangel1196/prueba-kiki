@@ -25,6 +25,9 @@ var ContainerController = exports.ContainerController = /** @class */ (function 
         var budget = request.budget, containers = request.containers;
         return this.containerService.selectContainers(budget, containers).map(function (element) { return element.name; }).join(", ");
     };
+    ContainerController.prototype.stats = function () {
+        return this.containerService.getStats();
+    };
     __decorate([
         (0, swagger_1.ApiOperation)({ summary: 'Seleccionar contenedores dentro de un presupuesto' }),
         (0, swagger_1.ApiResponse)({ status: 200, description: 'Nombres de contenedores seleccionados', type: [String] }),
@@ -35,6 +38,15 @@ var ContainerController = exports.ContainerController = /** @class */ (function 
         __metadata("design:paramtypes", [select_container_request_1.SelectContainersRequest]),
         __metadata("design:returntype", String)
     ], ContainerController.prototype, "selectContainersFromJSON", null);
+    __decorate([
+        (0, swagger_1.ApiOperation)({ summary: 'Seleccionar contenedores dentro de un presupuesto' }),
+        (0, swagger_1.ApiResponse)({ status: 200, description: 'Nombres de contenedores seleccionados', type: [String] }),
+        (0, swagger_1.ApiBadRequestResponse)({ description: 'Parámetros inválidos' }),
+        (0, common_1.Post)('/stats'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", Object)
+    ], ContainerController.prototype, "stats", null);
     ContainerController = __decorate([
         (0, swagger_1.ApiTags)('knapsack'),
         (0, common_1.Controller)('containers'),

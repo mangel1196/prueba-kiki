@@ -22,10 +22,10 @@ var AppModule = exports.AppModule = /** @class */ (function () {
             imports: [
                 typeorm_1.TypeOrmModule.forRoot({
                     type: 'postgres',
-                    host: 'localhost',
-                    port: 5342,
-                    username: 'admin',
-                    password: 'admin',
+                    host: process.env.RDS_HOSTNAME,
+                    port: parseInt(process.env.RDS_PORT),
+                    username: process.env.RDS_USERNAME,
+                    password: process.env.RDS_PASSWORD,
                     database: 'kiki_prueba',
                     entities: [Requests_1.Requests],
                     synchronize: false,

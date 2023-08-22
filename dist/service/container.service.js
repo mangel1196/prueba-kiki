@@ -27,6 +27,17 @@ var ContainerService = exports.ContainerService = /** @class */ (function () {
         request.aprovedBudget = selectedContainers.map(function (element) { return element.cost; }).reduce(function (valorAnterior, valorActual, indice, vector) { return valorAnterior + valorActual; });
         return this.repository.save(request);
     };
+    ContainerService.prototype.getStats = function () {
+        var requests;
+        this.repository.find().then(function (elements) { return requests = elements; });
+        var total = requests.map(function (element) { return element.initialBudget; }).reduce(function (valorAnterior, valorActual, indice, vector) { return valorAnterior + valorActual; });
+        var aproved = requests.map(function (element) { return element.aprovedBudget; }).reduce(function (valorAnterior, valorActual, indice, vector) { return valorAnterior + valorActual; });
+        return {
+            "total_budget": total,
+            "approved_budget": aproved,
+            "rejected_budget": total - aproved
+        };
+    };
     ContainerService.prototype.selectContainers = function (budget, containers) {
         var n = containers.length;
         var dp = Array.from({ length: n + 1 }, function () { return Array(budget + 1).fill(0); });
